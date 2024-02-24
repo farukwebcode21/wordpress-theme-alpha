@@ -67,3 +67,8 @@ h2.post-title {
 .tags li {
 	color: #3D9970;
 }
+
+.tag-list a{
+	list-style: none !important;
+	text-decoration: none !important;
+}

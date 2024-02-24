@@ -25,18 +25,19 @@ while (have_posts()) {
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2 class="post-title"><?php the_title();?></h2>
+                        <h2 class="post-title">
+                            <a href="<?php the_permalink();?>"><?php the_title();?></a>
+                        </h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <p>
                             <strong><?php the_author();?></strong><br />
-                            <?php the_date();?>
+                            <?php echo get_the_date(); ?>
+
                         </p>
-                        <ul class="list-unstyled">
-                            <li>dhaka</li>
-                        </ul>
+                         <?php echo get_the_tag_list("<ul class=\"list-unstyled\"><li>", "</li><li>", "</li></ul>"); ?>
                     </div>
                     <div class="col-md-8">
                         <p>
@@ -44,9 +45,13 @@ while (have_posts()) {
         the_post_thumbnail('large', array('class' => "img-fluid"));
     }
     ?>
+                            <?php
+if (is_single()) {
+        the_content();
+    }
+    the_excerpt();?>
                         </p>
-                        <p><?php the_content();?></p>
-                        <p></p>
+
                     </div>
                 </div>
 
